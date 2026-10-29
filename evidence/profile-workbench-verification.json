@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-29",
+  "engine": "profiles-v1",
+  "mode": "local",
+  "python_tests_passed": 33,
+  "original_pipeline_regressions_passed": true,
+  "browser_checks": {
+    "sales_multi_format_profile_save_and_run": true,
+    "inventory_profile_configured_through_controls": true,
+    "saved_inventory_rules_reused_after_reload": true,
+    "composite_key_and_exact_decimal_total": "5 inputs = 4 accepted + 0 review + 1 skipped; exact total 10.3751",
+    "portable_profile_export_validated": true,
+    "portable_kaggle_profile_imported": true,
+    "kaggle_source_encoding_and_mapping_reused": true,
+    "full_kaggle_source_accepted": 9994,
+    "service_ticket_rules_and_replay": "6 inputs = 3 accepted + 2 review + 1 skipped; total hours 4.00 with one missing value",
+    "browser_console_errors_observed": 0
+  },
+  "limits": {
+    "files": 20,
+    "bytes_per_file": 5000000,
+    "bytes_per_batch": 20000000,
+    "parsed_rows_per_batch": 50000,
+    "numeric_magnitude": "10^24",
+    "maximum_decimal_places": 12
+  },
+  "cloud_scope": "Reusable profiles and multi-file execution remain local. Existing AWS sales-v1 deployment unchanged."
+}

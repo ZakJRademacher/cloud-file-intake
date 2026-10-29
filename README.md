@@ -10,7 +10,17 @@ A small cloud-engineering learning project: turn an uploaded sales CSV into chec
 
 This is an independent learning project with a defined small-file contract. There is no public cloud upload endpoint. Review the [case study](docs/CASE_STUDY.md), [sample outputs](deliverables/sample-run/manifest.json) or [cost assumptions](evidence/cost-estimate.json).
 
-## Try it
+## Reusable CSV workbench · local
+
+**Configure a task through the setup screen, then reuse its profile.** The workbench combines multiple CSV exports, maps their headings, validates configurable fields, checks keys across the batch and preserves exact decimal line amounts. Required values, dates, numeric bounds, allowed values, composite keys, extra columns and duplicate policies are editable. Profiles save locally and export/import as JSON.
+
+Double-click **Start Workbench.cmd**, or run `python -m src.local_web --port 8803 --workspace --open-browser`. Try the sales and service-ticket examples, or upload your own files. [Workbench guide](docs/WORKBENCH.md) · [External-data verification](evidence/profile-workbench-kaggle.json).
+
+This reusable workflow runs locally. The AWS deployment and original lab below continue to use the recorded sales-v1 contract. The Excel consolidator remains available as its separate native Power Query template.
+
+![Reusable workbench: configured service-ticket checks, reconciliation and safe replay](evidence/profile-workbench.png)
+
+## Try the original sales lab
 
 On this computer, double-click **Start Local Demo.cmd**. Keep its terminal open; close it or press Ctrl+C when finished. The launcher opens `http://127.0.0.1:8801/` and uses the configured local Python executable. On another machine, install Python 3.12 and run from this folder:
 

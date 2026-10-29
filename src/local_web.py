@@ -9,12 +9,15 @@ from urllib.parse import unquote, urlparse
 from .jobs import digest, run_job
 from .processor import MAX_BYTES
 from .storage import LocalStore
+from .workbench import Workbench, sample_bundle
+from .profile_engine import ProfileError, validate_profile
 
 ROOT=Path(__file__).resolve().parents[1]
 SAMPLES={'weekly-sales.csv','alternate-headers.csv','bad-schema.csv'}
 
 
 def make_handler(store, token):
+    workbench=Workbench(store.root)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args): pass
 
@@ -36,6 +39,23 @@ def make_handler(store, token):
         def do_GET(self):
             if not self.host_ok():return self.json(403,{'error':'Open the printed 127.0.0.1 address.'})
             path=urlparse(self.path).path
+            if path in ['/workspace','/workspace/','/workbench.js','/workbench.css']:
+                name='workbench.html' if path.startswith('/workspace') else path[1:]
+                data=(ROOT/'web'/name).read_bytes().replace(b'__LOCAL_TOKEN__',token.encode())
+                kind={'workbench.html':'text/html; charset=utf-8','workbench.js':'text/javascript; charset=utf-8','workbench.css':'text/css; charset=utf-8'}[name]
+                return self.send(200,data,kind)
+            if path=='/api/workbench/profiles':return self.json(200,{'profiles':workbench.profiles()})
+            if path=='/api/workbench/jobs':return self.json(200,{'jobs':workbench.jobs()})
+            if path.startswith('/api/workbench/example/'):
+                try:return self.json(200,sample_bundle(path.rsplit('/',1)[-1]))
+                except ProfileError as error:return self.json(400,{'error':str(error)})
+            match=re.fullmatch(r'/api/workbench/jobs/([a-f0-9]{64})/files/([a-z_.]+)',path)
+            if match:
+                try:
+                    data=workbench.download(*match.groups())
+                    if data is not None:return self.send(200,data,'application/octet-stream',match.group(2))
+                except (RuntimeError,OSError,ValueError):return self.json(409,{'error':'Saved output failed verification or is unavailable.'})
+                return self.json(404,{'error':'Published file not found.'})
             if path in ['/','/app.js','/styles.css']:
                 name='index.html' if path=='/' else path[1:]
                 data=(ROOT/'web'/name).read_bytes().replace(b'__LOCAL_TOKEN__',token.encode())
@@ -67,6 +87,20 @@ def make_handler(store, token):
                 return self.json(403,{'error':'This local request was not authorized.'})
             try:
                 length=int(self.headers.get('Content-Length','-1'))
+                if urlparse(self.path).path.startswith('/api/workbench/'):
+                    if not 0<=length<=28_000_000:return self.json(413,{'error':'Use a batch up to 20 MB; each file up to 5 MB.'})
+                    body=self.rfile.read(length)
+                    if len(body)!=length:return self.json(400,{'error':'Incomplete request.'})
+                    try:
+                        value=json.loads(body)
+                        if not isinstance(value,dict):raise ProfileError('Use a JSON object.')
+                        path=urlparse(self.path).path
+                        if path=='/api/workbench/inspect':return self.json(200,workbench.inspect(value))
+                        if path=='/api/workbench/validate':return self.json(200,{'profile':validate_profile(value.get('profile'))})
+                        if path=='/api/workbench/profiles':return self.json(200,workbench.save_profile(value.get('profile'),value.get('id')))
+                        if path=='/api/workbench/run':return self.json(200,workbench.run(value.get('profile'),value.get('files')))
+                        return self.json(404,{'error':'Route not found.'})
+                    except (ProfileError,ValueError,TypeError,KeyError) as error:return self.json(400,{'error':str(error)})
                 if not 0<=length<=MAX_BYTES:return self.json(413,{'error':'Use a CSV up to 1,000,000 bytes.'})
                 path=urlparse(self.path).path
                 if path=='/api/upload':
@@ -92,10 +126,11 @@ def main():
     parser.add_argument('--port',type=int,default=8801)
     parser.add_argument('--store',type=Path,default=ROOT/'local-data')
     parser.add_argument('--open-browser',action='store_true')
+    parser.add_argument('--workspace',action='store_true',help='Open the reusable CSV workbench instead of the original sales lab.')
     args=parser.parse_args()
     store=LocalStore(args.store)
     server=ThreadingHTTPServer(('127.0.0.1',args.port),make_handler(store,secrets.token_urlsafe(32)))
-    url=f'http://127.0.0.1:{server.server_port}/'
+    url=f'http://127.0.0.1:{server.server_port}/'+('workspace' if args.workspace else '')
     print(f'Cloud File Intake — LOCAL ONLY\n{url}\nStore: {store.root}\nCtrl+C stops the server.',flush=True)
     if args.open_browser:
         import webbrowser

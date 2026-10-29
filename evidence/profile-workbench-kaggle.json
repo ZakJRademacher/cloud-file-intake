@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-29",
+  "source": "https://www.kaggle.com/datasets/vivek468/superstore-dataset-final",
+  "source_sha256": "58fb59c63089e564d835e4aabe19d371757de1137a5bf1888243ae386c4b7a97",
+  "full_source_counts": {
+    "input_rows": 9994,
+    "accepted_rows": 9994,
+    "review_rows": 0,
+    "skipped_rows": 0,
+    "file_issues": 0,
+    "files": 1
+  },
+  "sales_total": "2297200.8603",
+  "quantity_total": "37873",
+  "every_mapped_field_and_preserved_extra_matches_source": true,
+  "unchanged_batch_replay_verified": true,
+  "full_source_job_id": "ed70472a5bde78ebf06548051e1988a0a82506e732e9a17bcd77121018d61d9a",
+  "former_master_counts": {
+    "input_rows": 995,
+    "accepted_rows": 995,
+    "review_rows": 0,
+    "skipped_rows": 0,
+    "file_issues": 0,
+    "files": 1
+  },
+  "former_master_sales": "243731.3704",
+  "former_master_job_id": "254a514947d141cd8710677e1f22296ff9ff48c01cf9844c53689c2b2180ef73",
+  "amount_method": "Exact source line amounts; no unit-price reconstruction, rounding or currency inference.",
+  "scope": "Local reusable workbench. Original deployed sales-v1 pipeline unchanged."
+}
