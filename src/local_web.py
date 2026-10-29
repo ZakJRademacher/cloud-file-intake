@@ -129,6 +129,18 @@ def main():
     parser.add_argument('--workspace',action='store_true',help='Open the reusable CSV workbench instead of the original sales lab.')
     args=parser.parse_args()
     store=LocalStore(args.store)
+    if args.open_browser and args.port:
+        from urllib.request import urlopen
+        existing=f'http://127.0.0.1:{args.port}/'+('workspace' if args.workspace else '')
+        try:
+            with urlopen(existing,timeout=2) as response:page=response.read(100_000)
+            marker=b'Intake Workbench' if args.workspace else b'Cloud File Intake'
+            if marker in page and b'local-token' in page:
+                import webbrowser
+                webbrowser.open(existing)
+                print('The local application is already running: '+existing,flush=True)
+                return
+        except OSError:pass
     server=ThreadingHTTPServer(('127.0.0.1',args.port),make_handler(store,secrets.token_urlsafe(32)))
     url=f'http://127.0.0.1:{server.server_port}/'+('workspace' if args.workspace else '')
     print(f'Cloud File Intake — LOCAL ONLY\n{url}\nStore: {store.root}\nCtrl+C stops the server.',flush=True)

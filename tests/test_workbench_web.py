@@ -4,9 +4,10 @@ import json
 import tempfile
 import threading
 import unittest
+from unittest.mock import patch
 import urllib.error
 import urllib.request
-from src.local_web import make_handler
+from src.local_web import main, make_handler
 from src.storage import LocalStore
 from src.workbench import sample_bundle
 
@@ -54,6 +55,11 @@ class WorkbenchWebTests(unittest.TestCase):
         self.assertEqual(self.request('/api/workbench/inspect',{'name':'x.csv','data':'%%%%'})[0],400)
         status,body=self.request('/api/workbench/inspect',{'name':'x.csv','data':base64.b64encode(b'ID\n1\n').decode(),'encoding':'wrong'})
         self.assertEqual(status,400);self.assertIn(b'encoding',body)
+
+    def test_launcher_reuses_verified_running_workbench(self):
+        with patch('sys.argv',['local_web','--port',str(self.server.server_port),'--workspace','--open-browser','--store',self.temp.name]),patch('webbrowser.open') as opened:
+            main()
+        opened.assert_called_once_with(self.base+'/workspace')
 
 
 if __name__=='__main__':unittest.main()
