@@ -1,6 +1,6 @@
 # Cloud File Intake
 
-A small cloud-engineering learning project: turn an uploaded sales CSV into checked records, an exception report and a reproducible result.
+Turn recurring CSV exports into checked records, a correction queue and a reproducible result. Saved local profiles support reusable consolidation and validation; a separate small AWS pipeline demonstrates reliable cloud ingestion.
 
 ![Cloud File Intake: private S3 uploads, SQS, Python Lambda and verified outputs](deliverables/portfolio-cover.png)
 
@@ -8,7 +8,7 @@ A small cloud-engineering learning project: turn an uploaded sales CSV into chec
 
 [![Checks](https://github.com/ZakJRademacher/cloud-file-intake/actions/workflows/checks.yml/badge.svg)](https://github.com/ZakJRademacher/cloud-file-intake/actions/workflows/checks.yml)
 
-This is an independent learning project with a defined small-file contract. There is no public cloud upload endpoint. Review the [case study](docs/CASE_STUDY.md), [sample outputs](deliverables/sample-run/manifest.json) or [cost assumptions](evidence/cost-estimate.json).
+These are independent demonstrations with separate local-workbench and cloud-processing contracts. There is no public cloud upload endpoint. Review the [case study](docs/CASE_STUDY.md), [sample outputs](deliverables/sample-run/manifest.json) or [cost assumptions](evidence/cost-estimate.json).
 
 ## Reusable CSV workbench · local
 
@@ -100,8 +100,16 @@ Terraform test runs use a mocked provider and `command = plan`; they do not depl
 
 ## Boundaries
 
+### Original sales-v1 processor and AWS deployment
+
 One job processes one whole CSV, up to 1,000,000 bytes and 5,000 data rows. Business IDs are checked within that file. Different files remain separate jobs; there is no cross-file sales ledger or warehouse yet. Identical logical rows with changed file bytes are different job inputs. The output is cents in an unspecified source currency.
 
-The local console is for this computer, bound to loopback with a per-start request token; it is not a public upload service. Do not expose it to the internet. A production intake portal needs authentication, authorization, abuse controls and a stronger operational review. No production availability or throughput commitment is claimed. Live-cloud claims are limited to the recorded checks.
+### Reusable local workbench
+
+The configurable workbench checks keys across a multi-file batch: up to 20 files, 5 MB each, 20 MB combined and 50,000 parsed rows. It preserves exact decimal amounts. It does not execute profiles on AWS or maintain an incremental warehouse. See the [workbench guide](docs/WORKBENCH.md) for its complete contract.
+
+### Local access and verification scope
+
+The local consoles are for this computer, bound to loopback with a per-start request token; it is not a public upload service. Do not expose it to the internet. A production intake portal needs authentication, authorization, abuse controls and a stronger operational review. No production availability or throughput commitment is claimed. Live-cloud claims are limited to the recorded checks.
 
 Source and useful evidence live in the OneDrive project library. Local saving does not establish cloud synchronization. Original code and fictional data: [MIT](LICENSE). SDK and tooling retain their own licenses.
