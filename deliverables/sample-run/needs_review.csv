@@ -1,0 +1,8 @@
+source_row,record_id,sale_date,category,quantity,unit_price_cents,reason
+5,00105,2026-10-02,Furniture,1,4000,conflicting_record_id
+7,00105,2026-10-02,Furniture,1,4500,conflicting_record_id
+8,,2026-10-03,Office,1,250,invalid_record_id
+9,00106,2026-10-03,Office,two,250,invalid_quantity
+10,00107,2026-10-03,Tech,1,'-20,invalid_unit_price
+13,00110,2026-02-30,Office,1,250,invalid_date
+14,00111,2026-10-04,'=HYPERLINK(bad),1,250,invalid_category

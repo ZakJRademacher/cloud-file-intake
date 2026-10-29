@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-29",
+  "replay_same_bytes_two_object_versions_one_job": true,
+  "source_receipts_for_replay": 2,
+  "same_key_queued_versions_processed_independently": [
+    {
+      "quantity": 1,
+      "net_cents": 100,
+      "exact_source_version_verified": true
+    },
+    {
+      "quantity": 3,
+      "net_cents": 300,
+      "exact_source_version_verified": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "zip_sha256": "286ded7627ac2dab281c14554fa4ac72f53d522c072cb2df26694a2bd75666b4",
+  "bytes": 16800098,
+  "dependencies": [
+    "boto3==1.43.120",
+    "botocore==1.43.120",
+    "jmespath==1.1.0",
+    "python-dateutil==2.9.0.post0",
+    "s3transfer==0.19.3",
+    "six==1.17.0",
+    "urllib3==2.8.0"
+  ],
+  "entries": 2209,
+  "deployed": false
+}

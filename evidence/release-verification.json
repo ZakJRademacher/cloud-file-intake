@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-28",
+  "stage": "Local foundation and prepared AWS infrastructure",
+  "aws_deployed": false,
+  "python_tests": 20,
+  "terraform_validation": true,
+  "terraform_mocked_plans_passed": 1,
+  "bundled_sdk_smoke_check": true,
+  "lambda_zip_sha256": "286ded7627ac2dab281c14554fa4ac72f53d522c072cb2df26694a2bd75666b4",
+  "browser_checks": [
+    "Fictional sample processing",
+    "Safe replay without additional totals",
+    "Schema-error quarantine",
+    "Actual CSV file selection and upload",
+    "Downloaded summary matches the native processor output",
+    "Job history retained across server restart",
+    "Processed filename identified explicitly"
+  ],
+  "sample_counts": {
+    "input_rows": 14,
+    "accepted_rows": 6,
+    "review_rows": 7,
+    "skipped_rows": 1,
+    "net_cents": 2050
+  },
+  "next_step": "Create an AWS account and verify temporary authentication, region, quotas and the real deployment plan.",
+  "not_yet_verified": [
+    "AWS IAM permissions",
+    "S3 notifications and SQS delivery",
+    "Live Lambda execution",
+    "CloudWatch and email delivery",
+    "Live failure/redrive",
+    "Live deployment/rollback",
+    "Hosted GitHub Actions"
+  ],
+  "storage": "Source and evidence saved in the local OneDrive library; cloud synchronization not independently verified."
+}

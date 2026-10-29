@@ -1,0 +1,36 @@
+name: Check processor and infrastructure
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.17.0'
+          terraform_wrapper: false
+      - name: Test processing, replay, failure recovery and local HTTP behavior
+        run: python -m unittest discover -s tests -v
+      - name: Build deployment package from the SDK lock
+        run: python tools/build_lambda.py
+      - name: Smoke-check the extracted package with the real SDK and stubbed S3
+        run: python tools/smoke_package.py
+      - name: Initialize providers without a cloud backend
+        working-directory: infra
+        run: terraform init -backend=false -input=false
+      - name: Check Terraform formatting
+        working-directory: infra
+        run: terraform fmt -check -recursive
+      - name: Validate configuration and mocked infrastructure plan
+        working-directory: infra
+        run: |
+          terraform validate -no-color
+          terraform test -no-color

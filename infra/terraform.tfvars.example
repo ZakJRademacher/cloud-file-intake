@@ -1,0 +1,6 @@
+aws_region = "us-east-2"
+project_name = "zak-file-intake"
+monthly_budget_usd = 5
+# Set your own notification_email in a PRIVATE, git-ignored terraform.tfvars file.
+# This creates an SNS email subscription which you must confirm in your inbox.
+# notification_email = "your-address@example.com"

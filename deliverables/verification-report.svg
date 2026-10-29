@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#203741" stroke-width=".65"/></pattern><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#69dbc9"/></marker></defs>
+<rect width="1200" height="675" fill="#0d1e28"/><rect width="1200" height="675" fill="url(#grid)"/>
+<g font-family="Segoe UI,Arial,sans-serif"><rect x="48" y="45" width="5" height="24" rx="2" fill="#69dbc9"/><text x="68" y="64" fill="#94b6bd" font-size="15" letter-spacing="3">ZAK RADEMACHER / CLOUD ENGINEERING</text>
+<text x="48" y="133" fill="#f2f5ef" font-size="49" font-weight="700" letter-spacing="-1">Every result needs evidence.</text>
+<text x="49" y="176" fill="#bed1d2" font-size="23">Recorded AWS checks / October 29, 2026</text>
+<rect x="48" y="222" width="690" height="366" rx="16" fill="#142c36" stroke="#34505c"/>
+<g fill="#69dbc9" font-size="23"><text x="72" y="266">✓</text><text x="72" y="329">✓</text><text x="72" y="392">✓</text><text x="72" y="455">✓</text><text x="72" y="518">✓</text></g>
+<g fill="#f2f5ef" font-size="23" font-weight="600"><text x="110" y="265">Live event delivery</text><text x="110" y="328">Exact output checks</text><text x="110" y="391">Safe replay</text><text x="110" y="454">Version-aware processing</text><text x="110" y="517">Clear file rejection</text></g>
+<g fill="#abc1c7" font-size="17"><text x="110" y="290">S3 upload → SQS trigger → Lambda → S3 results</text><text x="110" y="353">All four CSV outputs match expected bytes and hashes</text><text x="110" y="416">Two upload versions, one content job, separate receipts</text><text x="110" y="479">Queued older and newer versions retain their own totals</text><text x="110" y="542">A schema error produces a quarantine diagnosis</text></g>
+<rect x="768" y="222" width="382" height="366" rx="16" fill="#122730" stroke="#34505c"/>
+<text x="792" y="264" fill="#95b9bd" font-size="14" letter-spacing="2">OPERATING BOUNDARIES</text>
+<g fill="#f2f5ef" font-size="25" font-weight="600"><text x="792" y="313">1 MB / 5,000 rows</text><text x="792" y="397">Two queued jobs</text><text x="792" y="481">Private by design</text></g>
+<g fill="#abc1c7" font-size="17"><text x="792" y="343">One complete CSV per job</text><text x="792" y="427">Maximum SQS trigger concurrency</text><text x="792" y="511">No public upload endpoint</text><text x="792" y="543">Local browser lab is a separate demo</text></g>
+<text x="49" y="629" fill="#a2bcc3" font-size="16">Source, checks, infrastructure and recovery instructions travel together.</text>
+<text x="1150" y="629" fill="#89a8b1" font-size="14" text-anchor="end">Fictional data / Defined sales contract</text>
+</g></svg>

@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-29",
+  "region": "us-east-2",
+  "basis": "Live AWS Price List API queries for Ohio; no credits or free allowances deducted.",
+  "scenario": "1000 uploads/month, 2 seconds average processing, 256MB, 2GB retained storage including versions, 1M SQS requests including polling, 20K PUT/LIST, 20K GET, 10MiB log ingestion.",
+  "components_usd": {
+    "three_standard_alarms": "0.30",
+    "one_custom_metric": "0.30",
+    "lambda_1000_jobs_2_seconds_256MB": "0.008533350000",
+    "sqs_1_million_requests_including_polling": "0.4000000",
+    "s3_2_gb_month_including_versions": "0.046",
+    "s3_20000_put_list_requests": "0.100000",
+    "s3_20000_get_requests": "0.0080000",
+    "logs_10_mb_ingestion": "0.00488281250"
+  },
+  "subtotal_usd": "1.167416162500",
+  "excluded": [
+    "SNS publish and email delivery",
+    "log archive storage",
+    "data transfer/downloads",
+    "taxes"
+  ],
+  "planning_estimate_usd_month": "1-2 for light learning use; not an upper bound",
+  "alert_budget_usd": "5",
+  "alert_threshold_usd": "4.0",
+  "alert_excludes_credits_and_refunds": true,
+  "spending_cap": false,
+  "sources": [
+    "https://aws.amazon.com/cloudwatch/pricing/",
+    "https://aws.amazon.com/lambda/pricing/",
+    "https://aws.amazon.com/s3/pricing/",
+    "https://aws.amazon.com/sqs/pricing/",
+    "https://aws.amazon.com/sns/pricing/"
+  ]
+}

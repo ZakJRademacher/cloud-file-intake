@@ -1,0 +1,31 @@
+{"event": "job_finished", "job_id": "d0756d4b3830d0215fdfd20a8c3cb090488505aab09c0902750b06bc3b953fa0", "status": "completed_with_review", "reused": false}
+{"event": "job_finished", "job_id": "d0756d4b3830d0215fdfd20a8c3cb090488505aab09c0902750b06bc3b953fa0", "status": "completed_with_review", "reused": true}
+{"event": "job_finished", "job_id": "47f2107533c8b4b498e085f3e986d7406d5e52f2029d55ed76cff2f0556bc014", "status": "quarantined", "reused": false}
+{"event": "job_finished", "job_id": "d0756d4b3830d0215fdfd20a8c3cb090488505aab09c0902750b06bc3b953fa0", "status": "completed_with_review", "reused": false}
+{"event": "message_failed", "message_id": "bad", "error_type": "JSONDecodeError"}
+{"event": "message_failed", "message_id": "retry", "error_type": "PermissionError"}
+test_corrupt_complete_result_is_detected_instead_of_silently_reused (test_jobs.JobTests.test_corrupt_complete_result_is_detected_instead_of_silently_reused) ... ok
+test_failed_publish_has_no_manifest_and_retry_repairs_partial_outputs (test_jobs.JobTests.test_failed_publish_has_no_manifest_and_retry_repairs_partial_outputs) ... ok
+test_local_store_rejects_traversal_and_absolute_keys (test_jobs.JobTests.test_local_store_rejects_traversal_and_absolute_keys) ... ok
+test_repeat_delivery_has_one_result_with_separate_source_receipts (test_jobs.JobTests.test_repeat_delivery_has_one_result_with_separate_source_receipts) ... ok
+test_schema_error_is_terminal_quarantine_with_explanation (test_jobs.JobTests.test_schema_error_is_terminal_quarantine_with_explanation) ... ok
+test_exact_version_and_encoded_key_are_used_and_replays_reuse_results (test_lambda.LambdaTests.test_exact_version_and_encoded_key_are_used_and_replays_reuse_results) ... ok
+test_malformed_input_is_quarantined_and_acknowledged (test_lambda.LambdaTests.test_malformed_input_is_quarantined_and_acknowledged) ... ok
+test_missing_version_wrong_prefix_and_oversized_objects_fail (test_lambda.LambdaTests.test_missing_version_wrong_prefix_and_oversized_objects_fail) ... ok
+test_partial_batch_returns_only_the_operational_failure (test_lambda.LambdaTests.test_partial_batch_returns_only_the_operational_failure) ... ok
+test_s3_configuration_test_is_acknowledged (test_lambda.LambdaTests.test_s3_configuration_test_is_acknowledged) ... ok
+test_storage_access_failure_is_retried (test_lambda.LambdaTests.test_storage_access_failure_is_retried) ... ok
+test_contract_rejects_invalid_files (test_processor.ProcessorTests.test_contract_rejects_invalid_files) ... ok
+test_header_aliases_reordering_bom_and_line_endings (test_processor.ProcessorTests.test_header_aliases_reordering_bom_and_line_endings) ... ok
+test_header_only_has_zero_controls (test_processor.ProcessorTests.test_header_only_has_zero_controls) ... ok
+test_independent_counts_signed_amounts_and_all_conflicting_copies (test_processor.ProcessorTests.test_independent_counts_signed_amounts_and_all_conflicting_copies) ... ok
+test_limits_and_integer_date_rules (test_processor.ProcessorTests.test_limits_and_integer_date_rules) ... ok
+test_review_export_neutralizes_formulas_and_preserves_input (test_processor.ProcessorTests.test_review_export_neutralizes_formulas_and_preserves_input) ... ok
+test_local_upload_replay_and_export_download (test_web.WebTests.test_local_upload_replay_and_export_download) ... ok
+test_missing_token_cross_origin_and_wrong_host_are_rejected (test_web.WebTests.test_missing_token_cross_origin_and_wrong_host_are_rejected) ... ok
+test_page_is_explicit_about_local_mode_and_jobs_are_json (test_web.WebTests.test_page_is_explicit_about_local_mode_and_jobs_are_json) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.744s
+
+OK

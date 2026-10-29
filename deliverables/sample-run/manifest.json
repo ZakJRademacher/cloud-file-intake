@@ -1,0 +1,32 @@
+{
+  "contract_version": "sales-v1",
+  "counts": {
+    "accepted_rows": 6,
+    "input_rows": 14,
+    "net_cents": 2050,
+    "review_rows": 7,
+    "skipped_rows": 1
+  },
+  "files": {
+    "accepted.csv": {
+      "bytes": 290,
+      "sha256": "f41268ed9b45463dfc1819fc1c526a2a646c7f153337e21cb92889f90f9fa19b"
+    },
+    "needs_review.csv": {
+      "bytes": 442,
+      "sha256": "cc160ea83d89fabc041adb3fd36ee42139a50638425dcc290ce4e256ead08ae6"
+    },
+    "skipped.csv": {
+      "bytes": 117,
+      "sha256": "4bd8fddc4f67de6d258e5904bcb8326e0de219563d84d95d53a638f2b4069b2f"
+    },
+    "summary.csv": {
+      "bytes": 57,
+      "sha256": "c862d8d5eb1258bfc987aab90fce14cf7e9246a2d0155897e1d9cc377045a18c"
+    }
+  },
+  "job_id": "d0756d4b3830d0215fdfd20a8c3cb090488505aab09c0902750b06bc3b953fa0",
+  "source_bytes": 483,
+  "source_sha256": "8f109211d606e77095aaa8f07dbaa5b47e1e729fbcfd69a377c0624f7a4fd231",
+  "status": "completed_with_review"
+}

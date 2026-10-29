@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-29",
+  "aws_deployed": true,
+  "region": "us-east-2",
+  "path": "S3 upload to SQS to Lambda to S3 results",
+  "sample_counts": {
+    "accepted_rows": 6,
+    "input_rows": 14,
+    "net_cents": 2050,
+    "review_rows": 7,
+    "skipped_rows": 1
+  },
+  "manifest_matches_local_expected": true,
+  "artifact_hashes_and_bytes_verified": [
+    "accepted.csv",
+    "needs_review.csv",
+    "skipped.csv",
+    "summary.csv"
+  ],
+  "schema_error_quarantined": true,
+  "live_receipts_downloaded_privately": 2
+}

@@ -1,0 +1,18 @@
+{
+  "mode": "local",
+  "aws_deployed": false,
+  "python_tests_passed": 20,
+  "fixture_sha256": "8f109211d606e77095aaa8f07dbaa5b47e1e729fbcfd69a377c0624f7a4fd231",
+  "sample_counts": {
+    "input_rows": 14,
+    "accepted_rows": 6,
+    "review_rows": 7,
+    "skipped_rows": 1,
+    "net_cents": 2050
+  },
+  "repeat_reuses_job": true,
+  "malformed_file_quarantined": true,
+  "interrupted_job_has_no_manifest": true,
+  "retry_restores_complete_result": true,
+  "note": "Terraform validation and mocked-plan evidence are separate; no live AWS assertions are made."
+}

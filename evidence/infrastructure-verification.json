@@ -1,0 +1,18 @@
+{
+  "deployed": false,
+  "aws_account_required": false,
+  "checks": [
+    {
+      "check": "terraform-format",
+      "passed": true
+    },
+    {
+      "check": "terraform-validate",
+      "passed": true
+    },
+    {
+      "check": "terraform-mock-test",
+      "passed": true
+    }
+  ]
+}

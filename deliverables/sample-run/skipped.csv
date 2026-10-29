@@ -1,0 +1,2 @@
+source_row,record_id,sale_date,category,quantity,unit_price_cents,reason
+6,00102,2026-10-01,Tech,1,1500,exact_repeat

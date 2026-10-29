@@ -1,0 +1,6 @@
+tests\pipeline.tftest.hcl... in progress
+  run "private_replay_safe_pipeline"... pass
+tests\pipeline.tftest.hcl... tearing down
+tests\pipeline.tftest.hcl... pass
+
+Success! 1 passed, 0 failed.
