@@ -37,7 +37,7 @@ The last command deliberately returns exit code 2 for quarantine. A CLI file ove
 - Every input data row is accepted, reviewed or skipped exactly once; accepted totals reconcile to the category summary.
 - Identical bytes plus the same rule version reuse one content-addressed result. Separate upload receipts retain source identity.
 - Outputs publish before the manifest. Failed partial writes can be retried; readers require the final manifest. Existing output hashes are checked before reuse.
-- File-contract errors are quarantined with a reason. Operational failures retry through the cloud queue adapter; repeated failures have a planned dead-letter destination.
+- File-contract errors are quarantined with a reason. Operational failures retry through SQS; repeated failures reach the deployed dead-letter queue and can be redriven after repair.
 
 The fixture yields **14 inputs = 6 accepted + 7 review + 1 skipped**, with **2,050 net cents**. [Inspect the actual sample outputs](deliverables/sample-run/manifest.json).
 
