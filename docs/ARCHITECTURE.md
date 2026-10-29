@@ -2,11 +2,11 @@
 
 ## Core first
 
-`src/processor.py` has no network or file operations. It turns bounded bytes into dispositions, category totals and deterministic artifacts. `src/jobs.py` adds content identity, storage, integrity checks and the final manifest. `src/storage.py` provides local and S3 adapters. The local CLI and browser run the same core as the planned Lambda adapter.
+`src/processor.py` has no network or file operations. It turns bounded bytes into dispositions, category totals and deterministic artifacts. `src/jobs.py` adds content identity, storage, integrity checks and the final manifest. `src/storage.py` provides local and S3 adapters. The local CLI and browser run the same core as the deployed Lambda adapter.
 
 The browser console executes files synchronously on this computer. It does not emulate queue timing, AWS permissions, network behavior, pricing or service availability. Fake S3 in unit tests verifies adapter calls and response handling, not AWS itself.
 
-## Planned cloud path
+## Cloud path
 
 1. Upload a lowercase .csv filename under incoming/ in a private S3 raw bucket.
 2. S3 sends an ObjectCreated notification to a standard SQS queue. The queue policy accepts only that bucket and AWS account.
@@ -31,7 +31,7 @@ Versioning preserves source identity. Raw current/noncurrent versions have 21-da
 
 The function has a 30-second timeout and 256 MB memory. Its SQS mapping limits this trigger to two simultaneous jobs. The function uses the shared concurrency pool because the verified new-project quota is 10, below the buffer required to reserve capacity. This trigger limit does not cap direct or future unrelated invocations. Queue visibility is 180 seconds, matching AWS's six-timeout recommendation. Partial batch responses are enabled even though the initial batch size is one. [AWS queue configuration guidance](https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-configure.html).
 
-Structured JSON logs contain job/message IDs, statuses and error types, not rows or full source keys. Alarms cover unhandled Lambda errors, individual message failures and visible dead-letter messages. Optional SNS email requires confirmation. A separate account-wide budget is an alert threshold, not an enforced cap. There is no working alert delivery until an account is deployed and a recipient is configured.
+Structured JSON logs contain job/message IDs, statuses and error types, not rows or full source keys. Alarms cover unhandled Lambda errors, individual message failures and visible dead-letter messages. Optional SNS email requires confirmation. A separate account-wide budget is an alert threshold, not an enforced cap. Operational failure-alert email delivery was verified on October 29, 2026. Budget-threshold email delivery is a separate check; a real cost threshold was not forced.
 
 ## Later additions
 

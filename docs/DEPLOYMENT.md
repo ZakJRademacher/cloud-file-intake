@@ -1,6 +1,6 @@
-# Deployment — prepared, not executed
+# Deploy and verify
 
-Prerequisites: an AWS account/region that supports the resources, an authorized temporary CLI profile, Python 3.12, Terraform 1.17.0 and a reviewed cost plan. The project has passed local tests, a mocked Terraform plan and an authenticated plan. See AWS_PLAN.md for the October 29 preflight and estimate. No apply has run.
+Prerequisites: an AWS account/region that supports the resources, an authorized temporary CLI profile, Python 3.12, Terraform 1.17.0 and a reviewed cost plan. The project has passed local tests, a mocked Terraform plan and an authenticated plan. See AWS_PLAN.md for the October 29 preflight and estimate. The reviewed plan was applied October 29, 2026. See LIVE_VERIFICATION.md for the actual results.
 
 ## 1. Rebuild and test
 
@@ -51,7 +51,7 @@ terraform output -json
 
 If an SNS email recipient is configured, confirm the subscription in that inbox. A successful resource creation is not yet proof the pipeline works.
 
-## 4. Live smoke checks to complete after deployment
+## 4. Live smoke checks for each deployment
 
 Save `terraform output -json` privately and read the raw/results bucket names. From an authorized shell, upload the supplied sample to the raw bucket using a lowercase .csv extension under incoming/:
 
@@ -70,8 +70,8 @@ Then verify with the console or CLI:
 7. In the isolated learning deployment, inject a controlled operational failure; confirm retry, message-failure alarm and dead-letter behavior, restore the configuration, and redrive the message.
 8. Test the chosen notification destination and record whether it actually receives an alert.
 
-Keep dated evidence without exposing private raw records or settings. Source-role permissions, S3 event delivery, retention, alarms and runtime behavior remain unverified until these live checks pass.
+Keep dated evidence without exposing private raw records or settings. Record which checks actually pass. A configuration readback of retention is not a long-term retention test.
 
 ## GitHub automation
 
-The included checks workflow tests the processor, builds the ZIP and runs a mocked Terraform plan without cloud credentials. It has not run on GitHub yet. Automated deployment is deliberately deferred until the first manual deployment is verified. That later workflow should use a narrowly scoped deployment role, restricted GitHub OIDC trust, an approval environment and locked remote state. [GitHub's AWS OIDC guidance](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws).
+The included checks workflow tests the processor, builds the ZIP and runs a mocked Terraform plan without cloud credentials. Hosted checks passed October 29, 2026. Automated deployment remains deferred; the current workflow has no AWS credentials. That later workflow should use a narrowly scoped deployment role, restricted GitHub OIDC trust, an approval environment and locked remote state. [GitHub's AWS OIDC guidance](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws).

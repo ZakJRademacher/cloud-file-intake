@@ -10,13 +10,13 @@ Your exit check: trace the sample, explain its 14-row reconciliation, identify t
 
 ## Stage 2 — first AWS deployment
 
-Create your account, choose an eligible plan/region, set up temporary authentication and review the actual Terraform plan/costs. Deploy in an isolated learning project. Complete every live smoke check in DEPLOYMENT.md, including alert delivery and a controlled failure/redrive. Keep honest evidence of what worked and what did not.
+Completed October 29, 2026: temporary authentication, plan/credit and quota review, real Terraform deployment in us-east-2, core event-delivery checks, output integrity, replay, exact source versions, quarantine, actual operational-alert delivery and native failure/dead-letter/redrive recovery. See LIVE_VERIFICATION.md. Production-scale performance and a spending-threshold budget email remain outside the verified scope.
 
 Exit check: explain what S3, SQS, Lambda, IAM and CloudWatch each do, locate a failed message and recover it without editing generated totals.
 
 ## Stage 3 — delivery and operations
 
-Create the GitHub repository when the foundation is ready to share. Verify hosted CI, then add a restricted deployment role with GitHub OIDC, an approval environment and a remote state backend with locking. Demonstrate deploying a change and rolling it back. Do not count a workflow YAML file as a successful deployment demonstration.
+Repository published and hosted CI verified October 29, 2026. Next, add a restricted deployment role with GitHub OIDC, an approval environment and a remote state backend with locking. Demonstrate deploying a change and rolling it back. Do not count a workflow YAML file as a successful deployment demonstration.
 
 Exit check: rebuild the same infrastructure from source, explain the permissions and know how to remove the deployment and inspect remaining costs.
 

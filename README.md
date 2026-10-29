@@ -4,7 +4,7 @@ A small cloud-engineering learning project: turn an uploaded sales CSV into chec
 
 ![Cloud File Intake: private S3 uploads, SQS, Python Lambda and verified outputs](deliverables/portfolio-cover.png)
 
-**Deployed and core-verified on AWS, October 29, 2026.** A fictional CSV upload passed through S3, SQS and Lambda to produce the expected output files. Live checks also verified replay, schema quarantine and exact source-version handling. The browser lab remains local and runs the same Python rules. [See the recorded live checks](docs/LIVE_VERIFICATION.md).
+**Deployed and core-verified on AWS, October 29, 2026.** A fictional CSV upload passed through S3, SQS and Lambda to produce the expected output files. Live checks also verified replay, schema quarantine, exact source-version handling and native retry/dead-letter/redrive recovery. The browser lab remains local and runs the same Python rules. [See the recorded live checks](docs/LIVE_VERIFICATION.md).
 
 [![Checks](https://github.com/ZakJRademacher/cloud-file-intake/actions/workflows/checks.yml/badge.svg)](https://github.com/ZakJRademacher/cloud-file-intake/actions/workflows/checks.yml)
 

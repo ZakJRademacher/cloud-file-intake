@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-29",
+  "fictional_data_only": true,
+  "native_failed_attempts_observed": 5,
+  "visibility_timeout_seconds": 180,
+  "dead_letter_message_observed": true,
+  "repair": "Masked the deliberately corrupt test manifest with a recoverable versioned delete marker.",
+  "native_sqs_redrive_status": "COMPLETED",
+  "native_messages_moved": 1,
+  "lambda_completed_after_redrive": true,
+  "reused_after_redrive": false,
+  "dead_letter_queue_visible_after": 0,
+  "dead_letter_queue_inflight_after": 0,
+  "recovered_counts": {
+    "accepted_rows": 1,
+    "input_rows": 1,
+    "net_cents": 250,
+    "review_rows": 0,
+    "skipped_rows": 0
+  },
+  "all_four_outputs_and_hashes_verified": true,
+  "operational_alarm_email_delivered": true,
+  "temporary_mapping_pause_restored": true
+}

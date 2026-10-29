@@ -12,7 +12,7 @@ The AWS adapter returns a failed SQS message ID when storage access, source look
 
 After five receives, the queue's redrive policy sends the failed message to its dead-letter queue. Inspect the message privately, the job/message IDs in logs, and the exact source object version. Check permissions, available source versions, object size and the manifest/output integrity. The logs intentionally omit raw rows and full keys.
 
-Fix the cause before redriving. Do not repeatedly redrive an oversized source or invalid notification. A source over the demo limit needs to be split or processed by a separately designed path. Raw versions have 21-day retention; very late redrive after expiry may require restoring an archived source. Alerts and recovery are not live-verified yet.
+Fix the cause before redriving. Do not repeatedly redrive an oversized source or invalid notification. A source over the demo limit needs to be split or processed by a separately designed path. Raw versions have 21-day retention; very late redrive after expiry may require restoring an archived source. A fictional corrupted-result drill verified five native failed attempts, dead-lettering, repair and AWS native redrive on October 29, 2026. See LIVE_VERIFICATION.md.
 
 ## Partial output or corrupt completed output
 
@@ -20,7 +20,7 @@ A failed write before the manifest can be retried normally. Deterministic artifa
 
 If a completed manifest exists but an output fails its hash/size check, processing fails instead of reusing it. Preserve the evidence. In a learning deployment, inspect object versions and determine which content was altered. Restore a consistent previously verified set, or deliberately remove only the corrupted completion marker before an authorized rebuild from the exact source. Never delete objects broadly to clear an error.
 
-The local recovery test injects a write failure before summary.csv, verifies that no completion manifest exists and retries successfully. See evidence/local-verification.json and tests/test_jobs.py. This is distinct from a live AWS failure drill.
+The local recovery test injects a write failure before summary.csv, verifies that no completion manifest exists and retries successfully. See evidence/local-verification.json and tests/test_jobs.py. This local check is distinct from the later live AWS recovery drill recorded in LIVE_VERIFICATION.md.
 
 ## Roll back code
 
