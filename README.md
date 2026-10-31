@@ -2,13 +2,15 @@
 
 Turn recurring CSV exports into checked records, a correction queue and a reproducible result. Saved local profiles support reusable consolidation and validation; a separate small AWS pipeline demonstrates reliable cloud ingestion.
 
-![Cloud File Intake: private S3 uploads, SQS, Python Lambda and verified outputs](deliverables/portfolio-cover.png)
+![Cloud File Intake local CSV workspace](deliverables/portfolio-cover.png)
 
 **Deployed and core-verified on AWS, October 29, 2026.** A fictional CSV upload passed through S3, SQS and Lambda to produce the expected output files. Live checks also verified replay, schema quarantine, exact source-version handling and native retry/dead-letter/redrive recovery. The browser lab remains local and runs the same Python rules. [See the recorded live checks](docs/LIVE_VERIFICATION.md).
 
 [![Checks](https://github.com/ZakJRademacher/cloud-file-intake/actions/workflows/checks.yml/badge.svg)](https://github.com/ZakJRademacher/cloud-file-intake/actions/workflows/checks.yml)
 
 These are independent demonstrations with separate local-workbench and cloud-processing contracts. There is no public cloud upload endpoint. Review the [case study](docs/CASE_STUDY.md), [sample outputs](deliverables/sample-run/manifest.json) or [cost assumptions](evidence/cost-estimate.json).
+
+The October 31 presentation refresh adds a sky-blue and amber workspace, coordinated motion and responsive layouts. Local workflow checks passed separately from the historical AWS evidence. [Presentation maintenance](docs/VISUAL_DESIGN.md) · [New local checks](evidence/visual-refresh-2026-10-31.json) · [Motion preview](deliverables/portfolio-motion.webm).
 
 ## Reusable CSV workbench · local
 
@@ -18,7 +20,7 @@ Double-click **Start Workbench.cmd**, or run `python -m src.local_web --port 880
 
 This reusable workflow runs locally. The AWS deployment and original lab below continue to use the recorded sales-v1 contract. The Excel consolidator remains available as its separate native Power Query template.
 
-![Reusable workbench: configured service-ticket checks, reconciliation and safe replay](evidence/profile-workbench.png)
+![Refreshed local workspace with reusable validation profiles](docs/images/workspace-studio.png)
 
 ## Try the original sales lab
 

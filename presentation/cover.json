@@ -1,0 +1,19 @@
+{
+  "title": "Cloud File Intake",
+  "eyebrow": "TRACEABLE PROCESSING",
+  "description": "Recurring CSV files. Clear checks. A complete audit trail.",
+  "format": "Local workbench + separate AWS pipeline",
+  "image": "docs/images/workspace-studio.png",
+  "tokens": "design-tokens.json",
+  "color_roles": {
+    "canvas": "paper",
+    "surface": "white",
+    "ink": "ink",
+    "muted": "muted",
+    "primary": "sky",
+    "accent": "warm"
+  },
+  "frame_label": "Reusable CSV workspace",
+  "preview_note": "Local demo interface",
+  "footer": "PYTHON / CSV / RECONCILIATION"
+}

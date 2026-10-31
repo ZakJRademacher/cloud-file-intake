@@ -1,0 +1,20 @@
+{
+  "name": "Cloud File Intake / Studio",
+  "stylesheet": "web/studio.css",
+  "css_variables": {
+    "ink": "#EAF2FF",
+    "muted": "#A4B6D1",
+    "paper": "#0C121D",
+    "line": "#30425C",
+    "teal": "#78BDFF",
+    "lime": "#B7DBFF",
+    "orange": "#FFBE78",
+    "white": "#142034",
+    "red": "#FFA5B2",
+    "sky": "#78BDFF",
+    "warm": "#FFBE78",
+    "green": "#78BDFF"
+  },
+  "motion": "Staggered arrival and tactile hover; prefers-reduced-motion disables decorative animation.",
+  "status_policy": "Brand accents are independent of labeled success, warning and error states."
+}

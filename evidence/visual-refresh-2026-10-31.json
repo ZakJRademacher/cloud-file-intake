@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checks": {
+    "reusable_batch": {
+      "input": 9,
+      "accepted": 5,
+      "review": 3,
+      "skipped": 1,
+      "exact_accepted_total": "1247.4428",
+      "leading_zero_ids_and_known_zero_preserved": true,
+      "download_verified": true
+    },
+    "replay_reuses_saved_result": true,
+    "sales_contract": {
+      "input": 14,
+      "accepted": 6,
+      "review": 7,
+      "skipped": 1,
+      "net_cents": 2050,
+      "safe_replay": true,
+      "quarantine_has_no_fabricated_metrics": true
+    },
+    "mobile_390px_no_page_overflow": true,
+    "reduced_motion_no_running_animations": true
+  },
+  "javascript_errors": [],
+  "scope": "Local interfaces only. No AWS resources changed or cloud deployment retested."
+}

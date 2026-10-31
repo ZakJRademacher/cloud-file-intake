@@ -39,10 +39,10 @@ def make_handler(store, token):
         def do_GET(self):
             if not self.host_ok():return self.json(403,{'error':'Open the printed 127.0.0.1 address.'})
             path=urlparse(self.path).path
-            if path in ['/workspace','/workspace/','/workbench.js','/workbench.css']:
+            if path in ['/workspace','/workspace/','/workbench.js','/workbench.css','/studio.css']:
                 name='workbench.html' if path.startswith('/workspace') else path[1:]
                 data=(ROOT/'web'/name).read_bytes().replace(b'__LOCAL_TOKEN__',token.encode())
-                kind={'workbench.html':'text/html; charset=utf-8','workbench.js':'text/javascript; charset=utf-8','workbench.css':'text/css; charset=utf-8'}[name]
+                kind={'workbench.html':'text/html; charset=utf-8','workbench.js':'text/javascript; charset=utf-8','workbench.css':'text/css; charset=utf-8','studio.css':'text/css; charset=utf-8'}[name]
                 return self.send(200,data,kind)
             if path=='/api/workbench/profiles':return self.json(200,{'profiles':workbench.profiles()})
             if path=='/api/workbench/jobs':return self.json(200,{'jobs':workbench.jobs()})
