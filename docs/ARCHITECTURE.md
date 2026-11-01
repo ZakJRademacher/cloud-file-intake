@@ -1,8 +1,8 @@
-# Architecture and deliberate limits
+# Architecture and operating limits
 
 ## Core first
 
-`src/processor.py` has no network or file operations. It turns bounded bytes into dispositions, category totals and deterministic artifacts. `src/jobs.py` adds content identity, storage, integrity checks and the final manifest. `src/storage.py` provides local and S3 adapters. The local CLI and browser run the same core as the deployed Lambda adapter.
+`src/processor.py` takes the bounded CSV bytes and returns accepted/review/skipped records, category totals, and repeatable outputs. It does not read files or make network requests. `src/jobs.py` adds content identity, storage, integrity checks and the final manifest. `src/storage.py` provides local and S3 adapters. The local CLI and browser run the same core as the deployed Lambda adapter.
 
 The browser console executes files synchronously on this computer. It does not emulate queue timing, AWS permissions, network behavior, pricing or service availability. Fake S3 in unit tests verifies adapter calls and response handling, not AWS itself.
 

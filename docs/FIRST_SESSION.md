@@ -53,4 +53,4 @@ Without looking up an answer, explain:
 4. What happens when the same notification arrives twice?
 5. Why is a manifest useful after a failed write?
 
-We can work through these together. Being able to trace one file confidently matters more than memorizing service names.
+Keep your explanation with the sample outputs. The aim is to trace one complete file and understand what happens when the same delivery arrives again.

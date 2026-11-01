@@ -1,5 +1,7 @@
 # AWS deployment review - October 29, 2026
 
+> Historical plan and estimate: prices, plan status, and alert-delivery statements below describe the preflight on October 29. Later operational alert delivery is recorded in [Live verification](LIVE_VERIFICATION.md). Recheck current pricing and account status before a new deployment.
+
 **Applied October 29, 2026.** The reviewed Terraform plan created 29 resources/configuration objects with no updates or deletions. Region: **us-east-2**. Profile: **zak-aws**.
 
 ## What it creates

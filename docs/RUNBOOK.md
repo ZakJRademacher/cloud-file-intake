@@ -2,7 +2,7 @@
 
 ## Determine whether a result is published
 
-Require jobs/<id>/manifest.json. CSV objects without a manifest may be remnants of an interrupted run. A completed manifest must describe the expected file set and matching hashes. Do not treat the existence of accepted.csv alone as completion.
+Start with `jobs/<id>/manifest.json`. It identifies the completed output set and its expected hashes. CSV files on their own can be leftovers from an interrupted run; `accepted.csv` alone does not establish completion.
 
 Normal statuses: completed, completed_with_review, quarantined. Review rows are data-quality exceptions, not an infrastructure outage. A quarantined file has a permanent file-contract error and a diagnosis. Correct the original source and upload a new version; do not edit generated tables in place.
 

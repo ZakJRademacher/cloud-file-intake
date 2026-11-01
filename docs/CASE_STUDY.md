@@ -1,8 +1,10 @@
 # Cloud File Intake
 
-Recurring exports need more than a place to upload files. They need a clear contract, traceable exceptions and a way to retry failed work without inflating totals.
+I used this project to explore what happens after a CSV arrives: checking its format, separating records that need review, and retrying failed work without adding the same result twice.
 
 ![Architecture and sample reconciliation](../deliverables/portfolio-cover.png)
+
+The configurable [CSV workbench](WORKBENCH.md) runs locally. The AWS workflow below uses the separate, fixed sales-v1 contract.
 
 ## The workflow
 
@@ -28,7 +30,7 @@ The fictional 14-row example reconciles to 6 accepted, 7 for review and 1 skippe
 
 ## What was actually verified
 
-[Live AWS checks](LIVE_VERIFICATION.md) cover event delivery, sample reconciliation, output hashes, replay, source-version handling and quarantine. Twenty unit tests exercise the processor, storage, adapter and local HTTP boundaries. Infrastructure has both mocked validation and an authenticated plan.
+[Live AWS checks](LIVE_VERIFICATION.md) cover event delivery, sample reconciliation, output hashes, replay, source-version handling and quarantine. The recorded deployment-stage unit tests exercise the processor, storage, adapter, and local HTTP boundaries. Infrastructure has both mocked validation and an authenticated plan.
 
 ![Recorded verification summary](../deliverables/verification-report.png)
 

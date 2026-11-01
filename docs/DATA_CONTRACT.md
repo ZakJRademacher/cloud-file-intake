@@ -1,6 +1,6 @@
 # Sales CSV contract — sales-v1
 
-This first version processes one complete file, not a multi-file ledger. Samples are original fictional data. Preserve the original bytes; never repair a rejected record by guessing.
+The sales-v1 processor handles one complete CSV at a time. It does not combine jobs into a sales ledger. The samples are fictional; corrections to real records would need source evidence, with the original bytes preserved.
 
 ## File contract
 

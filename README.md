@@ -1,20 +1,18 @@
 # Cloud File Intake
 
-Turn recurring CSV exports into checked records, a correction queue and a reproducible result. Saved local profiles support reusable consolidation and validation; a separate small AWS pipeline demonstrates reliable cloud ingestion.
+This project explores two ways to check recurring CSV deliveries: a configurable workbench that runs locally, and a separate AWS pipeline for a small, fixed sales format. Both produce accepted records, a correction queue, and source references.
 
-![Cloud File Intake local CSV workspace](deliverables/portfolio-cover.png)
+![Local CSV workbench for configuring imports and reviewing results](deliverables/portfolio-cover.png)
 
-**Deployed and core-verified on AWS, October 29, 2026.** A fictional CSV upload passed through S3, SQS and Lambda to produce the expected output files. Live checks also verified replay, schema quarantine, exact source-version handling and native retry/dead-letter/redrive recovery. The browser lab remains local and runs the same Python rules. [See the recorded live checks](docs/LIVE_VERIFICATION.md).
+The **AWS sales-v1 pipeline was deployed and checked on October 29, 2026**. Recorded checks cover S3 uploads, SQS/Lambda processing, repeated deliveries, quarantine, and retry/dead-letter recovery. The browser workbench runs on your computer and does not send its saved profiles to AWS.
+
+[Case study](docs/CASE_STUDY.md) · [Recorded AWS checks](docs/LIVE_VERIFICATION.md) · [Sample output](deliverables/sample-run/manifest.json) · [Cost assumptions](evidence/cost-estimate.json)
 
 [![Checks](https://github.com/ZakJRademacher/cloud-file-intake/actions/workflows/checks.yml/badge.svg)](https://github.com/ZakJRademacher/cloud-file-intake/actions/workflows/checks.yml)
 
-These are independent demonstrations with separate local-workbench and cloud-processing contracts. There is no public cloud upload endpoint. Review the [case study](docs/CASE_STUDY.md), [sample outputs](deliverables/sample-run/manifest.json) or [cost assumptions](evidence/cost-estimate.json).
-
-The October 31 presentation refresh adds a sky-blue and amber workspace, coordinated motion and responsive layouts. Local workflow checks passed separately from the historical AWS evidence. [Presentation maintenance](docs/VISUAL_DESIGN.md) · [New local checks](evidence/visual-refresh-2026-10-31.json) · [Motion preview](deliverables/portfolio-motion.webm).
-
 ## Reusable CSV workbench · local
 
-**Configure a task through the setup screen, then reuse its profile.** The workbench combines multiple CSV exports, maps their headings, validates configurable fields, checks keys across the batch and preserves exact decimal line amounts. Required values, dates, numeric bounds, allowed values, composite keys, extra columns and duplicate policies are editable. Profiles save locally and export/import as JSON.
+Set up a source format once, then reuse the saved profile for later exports. The workbench combines multiple CSV exports, maps their headings, validates configurable fields, checks keys across the batch and preserves exact decimal line amounts. Required values, dates, numeric bounds, allowed values, composite keys, extra columns and duplicate policies are editable. Profiles save locally and export/import as JSON.
 
 Double-click **Start Workbench.cmd**, or run `python -m src.local_web --port 8803 --workspace --open-browser`. Try the sales and service-ticket examples, or upload your own files. [Workbench guide](docs/WORKBENCH.md) · [External-data verification](evidence/profile-workbench-kaggle.json).
 
@@ -42,7 +40,7 @@ python -m src.cli data/samples/bad-schema.csv
 
 The last command deliberately returns exit code 2 for quarantine. A CLI file over 1 MB is refused before copying. The local core and its tests use only Python's standard library.
 
-## What the first version demonstrates
+## How the sales processor handles a delivery
 
 - An explicit CSV contract, text IDs, signed quantities, exact integer-cent arithmetic and source-row references.
 - All conflicting copies of an ID go to review. A valid exact repeat is skipped. Known zero quantities/prices are valid.
@@ -114,4 +112,6 @@ The configurable workbench checks keys across a multi-file batch: up to 20 files
 
 The local consoles are for this computer, bound to loopback with a per-start request token; it is not a public upload service. Do not expose it to the internet. A production intake portal needs authentication, authorization, abuse controls and a stronger operational review. No production availability or throughput commitment is claimed. Live-cloud claims are limited to the recorded checks.
 
-Source and useful evidence live in the OneDrive project library. Local saving does not establish cloud synchronization. Original code and fictional data: [MIT](LICENSE). SDK and tooling retain their own licenses.
+Original code and fictional fixtures: [MIT](LICENSE). SDK and tooling retain their own licenses. This independent project includes recorded deployment checks; it does not provide a public cloud upload service.
+
+[Visual maintenance](docs/VISUAL_DESIGN.md) · [Local interface checks](evidence/visual-refresh-2026-10-31.json) · [Motion preview](deliverables/portfolio-motion.webm).

@@ -1,6 +1,6 @@
 # Reusable CSV workbench
 
-The workbench combines consolidation and validation in one local workflow. A profile describes your desired output fields and rules. Each saved export format describes how a source's headings, delimiter, encoding, dates and numbers map to those fields. Set up a new source format through controls, then reuse it for later batches without programming another processor.
+The workbench lets you combine CSV exports and check them using saved rules. A profile defines the output fields. Each export format maps a source's headings, delimiter, encoding, dates, and numbers to those fields, so later batches can reuse the same setup.
 
 ## Open it
 
